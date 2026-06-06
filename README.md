@@ -1,0 +1,2 @@
+# toDoClaudeVer
+try claude code
