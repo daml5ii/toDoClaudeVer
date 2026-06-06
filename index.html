@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <title>My Tasks</title>
+</head>
+<body>
+
+    <div class="app">
+
+        <div class="header">
+            <div class="header-top">
+                <h1 class="app-title">My tasks</h1>
+                <span class="date-label" id="dateLabel"></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num" id="statTotal">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num" id="statDone">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num" id="statDue">0</div>
+                <div class="stat-label">Due today</div>
+            </div>
+        </div>
+
+        <div class="add-row">
+            <input type="text" id="taskInput" class="task-input" placeholder="Add a task…" />
+            <select id="prioritySelect" class="priority-select">
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="low">Low</option>
+            </select>
+            <input type="date" id="dueInput" class="due-input" />
+            <button id="addBtn" class="add-btn">
+                <i class="ti ti-plus"></i> Add
+            </button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="done">Completed</button>
+            <button class="filter-btn" data-filter="high">High priority</button>
+            <button class="filter-btn" data-filter="today">Due today</button>
+        </div>
+
+        <div id="taskContainer"></div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
