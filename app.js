@@ -138,12 +138,16 @@ function buildTaskEl(t) {
             </div>
         </div>
         <div class="task-actions">
+            <button class="edit-btn" aria-label="Edit task">
+                <i class="ti ti-edit"></i>
+            </button>
             <button class="delete-btn" aria-label="Delete task">
                 <i class="ti ti-trash"></i>
             </button>
         </div>`;
 
     item.querySelector('.task-check').addEventListener('click', () => toggleTask(t.id));
+    item.querySelector('.edit-btn').addEventListener('click', () => startEdit(t.id));
     item.querySelector('.delete-btn').addEventListener('click', () => deleteTask(t.id));
 
     return item;
@@ -178,10 +182,75 @@ function deleteTask(id) {
     render();
 }
 
+function startEdit(id) {
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
+
+    taskInput.value = task.text;
+    prioritySelect.value = task.priority;
+    dueInput.value = task.due || '';
+
+    addBtn.textContent = 'Save';
+    addBtn.innerHTML = '<i class="ti ti-device-floppy"></i> Save';
+    addBtn.dataset.editId = String(id);
+
+    taskInput.focus();
+}
+
+function completeEdit() {
+    const id = addBtn.dataset.editId;
+
+    if (!id) {
+        addTask();
+        return;
+    }
+
+    const text = taskInput.value.trim();
+    if (!text) return;
+
+    const task = tasks.find(t => t.id === Number(id));
+    if (task) {
+        task.text = text;
+        task.priority = prioritySelect.value;
+        task.due = dueInput.value;
+        saveTasks();
+    }
+
+    cancelEdit();
+    render();
+}
+
+function cancelEdit() {
+    taskInput.value = '';
+    dueInput.value = '';
+    prioritySelect.value = 'medium';
+
+    addBtn.innerHTML = '<i class="ti ti-plus"></i> Add';
+    delete addBtn.dataset.editId;
+}
+
 // ── Events ────────────────────────────────────────────────
 
-addBtn.addEventListener('click', addTask);
-taskInput.addEventListener('keydown', e => { if (e.key === 'Enter') addTask(); });
+addBtn.addEventListener('click', () => {
+    if (addBtn.dataset.editId) {
+        completeEdit();
+    } else {
+        addTask();
+    }
+});
+taskInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        if (addBtn.dataset.editId) {
+            completeEdit();
+        } else {
+            addTask();
+        }
+    }
+    if (e.key === 'Escape' && addBtn.dataset.editId) {
+        cancelEdit();
+        render();
+    }
+});
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {

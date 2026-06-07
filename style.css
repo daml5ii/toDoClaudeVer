@@ -367,7 +367,26 @@ body {
 .task-item:hover .task-actions {
     opacity: 1;
 }
+/* ── Edit button ── */
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    color: #bbb;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s, background-color 0.15s;
+}
 
+.edit-btn:hover {
+    color: #1d4ed8;
+    background: #e8f5ff;
+}
+
+/* ── Delete button ── */
 .delete-btn {
     background: none;
     border: none;
@@ -445,4 +464,22 @@ body.dark-theme .filter-btn.active {
 
 body.dark-theme .progress-bar {
     background: #2e2e2e;
+}
+
+body.dark-theme .edit-btn {
+    color: #aaa;
+}
+
+body.dark-theme .edit-btn:hover {
+    color: #f5c842;
+    background: rgba(245, 200, 66, 0.1);
+}
+
+body.dark-theme .delete-btn {
+    color: #aaa;
+}
+
+body.dark-theme .delete-btn:hover {
+    color: #fca5a5;
+    background: rgba(220, 38, 38, 0.1);
 }
