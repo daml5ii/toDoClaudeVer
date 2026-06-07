@@ -136,6 +136,33 @@ body {
     color: #b0b0a8;
 }
 
+/* ── Mobile touch targets ── */
+@media (max-width: 480px) {
+    .add-row {
+        gap: 8px;
+    }
+
+    .task-input,
+    .priority-select,
+    .due-input {
+        height: 44px;
+        font-size: 16px; /* prevents zoom on iOS */
+    }
+
+    .add-btn {
+        height: 44px;
+        padding: 0 20px;
+    }
+
+    .task-item {
+        padding: 14px;
+    }
+
+    .task-actions {
+        opacity: 1; /* always show on touch */
+    }
+}
+
 .priority-select,
 .due-input {
     height: 40px;
