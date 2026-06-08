@@ -15,6 +15,7 @@ const STORAGE_KEY = 'pro_tasks_v1';
 let tasks = [];
 let activeFilter = 'all';
 
+alert('Welcome to the Professional To-Do List!');
 // ── Persistence ──────────────────────────────────────────
 
 function loadTasks() {
