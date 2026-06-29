@@ -38,7 +38,7 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/space-tasks.git
+git clone (https://github.com/daml5ii/toDoClaudeVer.git)
 cd space-tasks
 
 # Open directly — zero install needed
